@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="NLP">
+  <rect width="80" height="80" rx="12" fill="#0f172a"/>
+  <rect x="12" y="16" width="56" height="40" rx="10" fill="#1e293b" stroke="#eab308" stroke-opacity="0.7"/>
+  <path d="M26 56 L34 66 L46 56" fill="#1e293b" stroke="#eab308" stroke-opacity="0.7"/>
+  <text x="40" y="42" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">NLP</text>
+</svg>

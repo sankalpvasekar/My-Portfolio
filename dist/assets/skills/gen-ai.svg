@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Gen AI">
+  <rect width="80" height="80" rx="12" fill="#111827"/>
+  <path d="M40 14 L45 28 L60 33 L45 38 L40 52 L35 38 L20 33 L35 28 Z" fill="#f472b6"/>
+  <circle cx="56" cy="56" r="8" fill="#22d3ee" fill-opacity="0.75"/>
+  <text x="24" y="62" font-family="Arial, sans-serif" font-size="9" font-weight="700" fill="#f8fafc">GEN AI</text>
+</svg>

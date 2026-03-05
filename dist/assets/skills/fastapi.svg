@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="FastAPI">
+  <rect width="80" height="80" rx="12" fill="#0f172a"/>
+  <path d="M18 20 H62 L36 58 H18 Z" fill="#14b8a6"/>
+  <path d="M28 30 H50" stroke="#ccfbf1" stroke-width="3"/>
+  <path d="M28 40 H44" stroke="#ccfbf1" stroke-width="3"/>
+</svg>

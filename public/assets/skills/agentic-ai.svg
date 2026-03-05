@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Agentic AI">
+  <rect width="80" height="80" rx="12" fill="#111827"/>
+  <circle cx="40" cy="40" r="18" fill="#7c3aed" fill-opacity="0.25" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="40" cy="40" r="6" fill="#e9d5ff"/>
+  <path d="M40 12 V24 M40 56 V68 M12 40 H24 M56 40 H68 M20 20 L28 28 M52 52 L60 60 M60 20 L52 28 M20 60 L28 52" stroke="#c4b5fd" stroke-width="2" stroke-linecap="round"/>
+</svg>

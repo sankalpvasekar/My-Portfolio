@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Transformers">
+  <rect width="80" height="80" rx="12" fill="#0f172a"/>
+  <circle cx="40" cy="24" r="10" fill="#fde68a"/>
+  <circle cx="24" cy="48" r="10" fill="#fbbf24"/>
+  <circle cx="56" cy="48" r="10" fill="#f59e0b"/>
+  <path d="M40 24 L24 48 L56 48 Z" fill="none" stroke="#fef3c7" stroke-width="3"/>
+</svg>
