@@ -403,6 +403,16 @@ const ACHIEVEMENTS = [
         description: 'First place winner in the SKNSOCE Hackathon 2025, demonstrating innovative problem-solving and rapid prototyping.',
     },
     {
+        title: 'UI/UX Design Winner',
+        place: 'Regional Design Competition',
+        description: 'Recognized for excellence in user interface and experience design, creating intuitive and aesthetically stunning digital solutions.',
+    },
+    {
+        title: '5-Star Performance',
+        place: 'Hackathon Excellence',
+        description: 'Achieved a perfect 5-star rating for technical implementation and presentation during a high-stakes competitive hackathon.',
+    },
+    {
         title: 'Software Delivery Excellence',
         place: 'Prime Educational Services',
         description: 'Successfully delivered full production software for an online bookstore as a paid freelance developer.',
