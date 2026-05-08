@@ -1,4 +1,4 @@
-# Sankalp Vasekar | Portfolio
+# Sankalp Vasekar 
 
 Welcome to my professional portfolio. I am an **Engineering Student** and **AI Enthusiast** focused on building sophisticated Multi-Agent Systems, Neural Localization engines, and Cybersecurity solutions.
 
