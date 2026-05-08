@@ -745,11 +745,11 @@ export default function App() {
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: 'url("/assets/chronicles/japan-ruins.jpg")',
-                        filter: 'brightness(0.3) blur(1px)',
+                        backgroundImage: 'url("/assets/Achivements/1141602-black-dragon-wallpaper-hd-1920x1080-for-mobile-hd.jpg")',
+                        filter: 'brightness(0.25) contrast(1.1)',
                     }}
                 />
-                <div className="absolute inset-0 bg-red-950/20 z-0" />
+                <div className="absolute inset-0 bg-stone-950/60 z-0" />
 
                 <div className="container mx-auto px-6 md:px-10 relative z-10">
                     <div className="text-center mb-16">
@@ -764,7 +764,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: idx * 0.1 }}
-                                className="bg-stone-900/90 border-2 border-red-900/40 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-md"
+                                className="bg-stone-900/95 border border-stone-800/60 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-md"
                             >
                                 <div className="flex items-start gap-5">
                                     <div className="mt-1">
