@@ -8,6 +8,7 @@ import {
     Network,
     Bot,
     Mail,
+    Award,
 } from 'lucide-react';
 
 const FallingWhiteFeathers = () => {
@@ -549,6 +550,15 @@ export default function App() {
                                 <p className="text-gray-100 text-lg leading-relaxed font-medium bg-black/20 p-4 border-l-2 border-yellow-600">
                                     {exp.desc}
                                 </p>
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => setIsCertModalOpen(true)}
+                                    className="mt-8 flex items-center gap-2 px-6 py-2 border border-yellow-600/30 text-yellow-500 font-black uppercase tracking-widest hover:bg-yellow-600/10 transition-all"
+                                    style={{ fontSize: '10px' }}
+                                >
+                                    <Award size={14} /> View Certificate
+                                </motion.button>
                             </motion.div>
                         ))}
                     </div>
