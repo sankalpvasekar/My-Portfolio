@@ -383,22 +383,29 @@ const EXPERIENCE = [
         desc: 'Learned AI agents and RAG systems through focused hands-on implementation.',
     },
     {
-        role: 'Internship',
-        company: 'AICTE Microsoft',
+        role: 'PowerBI Internship',
+        company: 'Microsoft',
         year: 'Internship',
         desc: 'Worked on data visualization and analytics using Microsoft Power BI.',
-    },
-    {
-        role: 'Contract Developer',
-        company: 'Prime Educational Services',
-        year: 'Freelance',
-        desc: 'Worked as a paid freelance developer and delivered full production software for online book store.',
     },
     {
         role: 'Training Program',
         company: 'Indian Space Academy',
         year: 'Training',
         desc: 'Acquired specialized training in satellite data analysis and space research methodologies.',
+    },
+];
+
+const ACHIEVEMENTS = [
+    {
+        title: '2K25 Hackathon Winner',
+        place: 'SKNSOCE',
+        description: 'First place winner in the SKNSOCE Hackathon 2025, demonstrating innovative problem-solving and rapid prototyping.',
+    },
+    {
+        title: 'Software Delivery Excellence',
+        place: 'Prime Educational Services',
+        description: 'Successfully delivered full production software for an online bookstore as a paid freelance developer.',
     },
 ];
 
@@ -712,12 +719,53 @@ export default function App() {
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                className="bg-stone-900/80 backdrop-blur-md border border-red-900/30 p-8 flex items-center gap-4 group hover:border-yellow-600/50 transition-all shadow-xl"
+                                className="bg-stone-900/80 backdrop-blur-md border border-red-900/30 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-xl min-h-[120px]"
                             >
-                                <div className="w-1.5 h-12 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all" />
-                                <p className="text-white font-bold text-lg md:text-xl leading-snug tracking-tight uppercase">
+                                <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all" />
+                                <p className="text-white font-bold text-base md:text-lg leading-tight tracking-tight uppercase">
                                     {cert}
                                 </p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="achievements" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+                <div
+                    className="absolute inset-0 z-0 bg-cover bg-center"
+                    style={{
+                        backgroundImage: 'url("/assets/chronicles/japan-ruins.jpg")',
+                        filter: 'brightness(0.3) blur(1px)',
+                    }}
+                />
+                <div className="absolute inset-0 bg-red-950/20 z-0" />
+
+                <div className="container mx-auto px-6 md:px-10 relative z-10">
+                    <div className="text-center mb-16">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-5xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                            ACHIEVEMENTS
+                        </motion.h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                        {ACHIEVEMENTS.map((ach, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: idx * 0.1 }}
+                                className="bg-stone-900/90 border-2 border-red-900/40 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-md"
+                            >
+                                <div className="flex items-start gap-5">
+                                    <div className="mt-1">
+                                        <Award size={32} className="text-yellow-500 group-hover:scale-110 transition-transform" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-2xl font-black text-white uppercase tracking-tight mb-2">{ach.title}</h4>
+                                        <p className="text-yellow-600 font-bold uppercase text-xs tracking-widest mb-4">{ach.place}</p>
+                                        <p className="text-stone-300 leading-relaxed italic">"{ach.description}"</p>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
