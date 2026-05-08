@@ -412,14 +412,14 @@ const ACHIEVEMENTS = [
         description: 'Recognized for excellence in user interface and experience design, creating intuitive and aesthetically stunning digital solutions.',
     },
     {
-        title: '5-Star Performance',
-        place: 'Hackathon Excellence',
-        description: 'Achieved a perfect 5-star rating for technical implementation and presentation during a high-stakes competitive hackathon.',
+        title: '5-Star HackerRank Developer',
+        place: 'HackerRank',
+        description: 'Achieved a prestigious 5-Star Gold Badge on HackerRank, reflecting elite proficiency in complex algorithms and data structures.',
     },
     {
-        title: 'Software Delivery Excellence',
+        title: 'Lead Freelance Developer',
         place: 'Prime Educational Services',
-        description: 'Successfully delivered full production software for an online bookstore as a paid freelance developer.',
+        description: 'Architected and delivered a full-scale production software for an online bookstore, managing the entire project as a professional freelance developer.',
     },
 ];
 
@@ -453,7 +453,7 @@ export default function App() {
     };
 
     return (
-        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-screen h-screen overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth">
+        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-screen h-screen overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
 
             <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-10 py-3 md:py-6 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0 bg-black/95 backdrop-blur-md border-b border-stone-900">
@@ -463,22 +463,22 @@ export default function App() {
                 <div className="flex items-center gap-2 md:gap-3">
                     <button
                         onClick={() => scrollTo('projects')}
-                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-colors uppercase tracking-widest font-black"
-                        style={{ fontSize: '10px' }}
+                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black bg-stone-900/50 md:bg-transparent"
+                        style={{ fontSize: '9px' }}
                     >
                         Projects
                     </button>
                     <button
                         onClick={() => scrollTo('skills')}
-                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-colors uppercase tracking-widest font-black"
-                        style={{ fontSize: '10px' }}
+                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black bg-stone-900/50 md:bg-transparent"
+                        style={{ fontSize: '9px' }}
                     >
                         Skills
                     </button>
                     <button
                         onClick={() => scrollTo('certifications')}
-                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-colors uppercase tracking-widest font-black"
-                        style={{ fontSize: '10px' }}
+                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black bg-stone-900/50 md:bg-transparent"
+                        style={{ fontSize: '9px' }}
                     >
                         Certificates
                     </button>
@@ -491,35 +491,35 @@ export default function App() {
                     <FallingWhiteSnow />
                 </div>
                 <div
-                    className="absolute inset-0 z-0 bg-cover bg-right md:bg-center"
+                    className="absolute inset-0 z-0 bg-cover bg-[85%_center] md:bg-center"
                     style={{
                         backgroundImage: 'url("/assets/hero/main-bg.jpg")',
-                        filter: 'brightness(0.35) contrast(1.15)',
+                        filter: 'brightness(0.3) contrast(1.1)',
                     }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
 
-                <div className="container mx-auto px-10 relative z-20">
+                <div className="container mx-auto px-6 md:px-10 relative z-20">
                     <div className="max-w-4xl">
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                            <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="text-5xl md:text-8xl font-serif font-black leading-none mb-10 tracking-tighter text-white uppercase">
+                            <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="text-[40px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl">
                                 {PERSONAL_INFO.name.split(' ')[0]} <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
                                     {PERSONAL_INFO.name.split(' ')[1]}
                                 </span>
                             </motion.h1>
-                            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="text-lg md:text-xl text-stone-300 mb-12 max-w-2xl leading-8 font-medium text-justify">
+                            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="text-sm md:text-xl text-stone-300 mb-12 max-w-2xl leading-relaxed md:leading-8 font-medium text-left md:text-justify">
                                 {PERSONAL_INFO.summary}
                             </motion.p>
 
-                            <div className="flex flex-wrap gap-6">
+                            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-start">
                                 <a
                                     href="/assets/resume/CSE.pdf"
                                     download="Sankalp_Vasekar_Resume.pdf"
-                                    className="px-12 py-5 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center gap-3"
+                                    className="w-full sm:w-auto px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3"
                                     style={{ boxShadow: '0 0 30px rgba(153, 27, 27, 0.4)', borderColor: 'rgba(234, 179, 8, 0.3)' }}
                                 >
-                                    <Download size={20} /> Download Resume
+                                    <Download size={20} /> Resume
                                 </a>
                             </div>
                         </motion.div>
@@ -538,9 +538,9 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-black/35 z-0" />
 
-                <div className="container mx-auto px-10 relative z-10">
-                    <div className="mb-20">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
+                <div className="container mx-auto px-4 md:px-10 relative z-10">
+                    <div className="mb-12 md:mb-20">
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl sm:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
                             TRAINING & INTERNSHIPS
                         </motion.h3>
                     </div>
@@ -556,7 +556,7 @@ export default function App() {
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
                             >
                                 <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-red-800 opacity-40" />
-                                <motion.h4 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-500 uppercase tracking-tighter mb-2">
+                                <motion.h4 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-500 uppercase tracking-tighter mb-2">
                                     {exp.company}
                                 </motion.h4>
                                 <div className="flex items-center gap-2 mb-8">
@@ -598,7 +598,7 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-black/20 z-0" />
 
-                <div className="container mx-auto px-10 relative z-10">
+                <div className="container mx-auto px-4 md:px-10 relative z-10">
                     <div className="text-center mb-24">
                         <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             PROJECTS
