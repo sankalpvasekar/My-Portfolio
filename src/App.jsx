@@ -492,9 +492,8 @@ export default function App() {
 
                             <div className="flex flex-wrap gap-6">
                                 <a
-                                    href="/assets/resume/sankalp-vasekar-resume.pdf"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                    href="/assets/resume/CSE.pdf"
+                                    download="Sankalp_Vasekar_Resume.pdf"
                                     className="px-12 py-5 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center gap-3"
                                     style={{ boxShadow: '0 0 30px rgba(153, 27, 27, 0.4)', borderColor: 'rgba(234, 179, 8, 0.3)' }}
                                 >
