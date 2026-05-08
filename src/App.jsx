@@ -265,12 +265,12 @@ const PERSONAL_INFO = {
 };
 
 const CERTIFICATIONS = [
-    'IBM SkillsBuild: AI Strategy & Business Intelligence (AICTE)',
-    'Microsoft AI-900',
-    'OCI Generative AI Professional',
-    'OCI Generative AI Foundational',
-    'Python for Data Science (NPTEL, Top 5%)',
-    'DBMS (NPTEL, Top 5%)'
+    { name: 'IBM SkillsBuild: AI Strategy & Business Intelligence (AICTE)', img: '/assets/certificates/traning-ibm internship.jpeg' },
+    { name: 'Microsoft AI-900', img: null },
+    { name: 'OCI Generative AI Professional', img: '/assets/certificates/cr_ao profesisonal.jpeg' },
+    { name: 'OCI Generative AI Foundational', img: '/assets/certificates/cr_ai_foundation.jpeg' },
+    { name: 'Python for Data Science (NPTEL, Top 5%)', img: '/assets/certificates/cr_python for dta scinece.jpeg' },
+    { name: 'DBMS (NPTEL, Top 5%)', img: '/assets/certificates/cr_dbms.jpeg' },
 ];
 
 const TECH_ARSENAL = [
@@ -365,7 +365,7 @@ const PROJECTS = [
         tags: ['YOLOv8', 'OpenCV', 'IoT', 'Arduino', 'Computer Vision'],
         color: 'from-yellow-900 to-black',
         accent: 'text-teal-400',
-        github: 'https://github.com/sankalpvasekar/Smart-Traffic-Management',
+        github: 'https://github.com/sankalpvasekar/Auto_Traffic_Management',
     },
 ];
 
@@ -375,24 +375,28 @@ const EXPERIENCE = [
         company: 'IBM SkillsBuild',
         year: '2026',
         desc: 'Completed an intensive 6-week program conducted by CSRBOX and AICTE, focusing on advanced AI implementation and BI analytics.',
+        img: '/assets/certificates/traning-ibm internship_ain.jpeg'
     },
     {
         role: 'Summer Internship Training Program',
         company: 'IBM',
         year: 'Training',
         desc: 'Learned AI agents and RAG systems through focused hands-on implementation.',
+        img: '/assets/certificates/traning_ibm skillbuild.jpeg'
     },
     {
-        role: 'PowerBI Internship',
+        role: 'VOIS PowerBI Internship',
         company: 'Microsoft',
         year: 'Internship',
         desc: 'Worked on data visualization and analytics using Microsoft Power BI.',
+        img: '/assets/certificates/tr_powerbi_internship.jpeg'
     },
     {
         role: 'Training Program',
         company: 'Indian Space Academy',
         year: 'Training',
         desc: 'Acquired specialized training in satellite data analysis and space research methodologies.',
+        img: '/assets/certificates/trnaing_indian space academy.jpeg'
     },
 ];
 
@@ -441,7 +445,7 @@ const EDUCATION = [
 ];
 
 export default function App() {
-    const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+    const [selectedCert, setSelectedCert] = useState(null);
 
     const scrollTo = (id) => {
         const el = document.getElementById(id);
@@ -570,8 +574,8 @@ export default function App() {
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => setIsCertModalOpen(true)}
-                                    className="mt-8 flex items-center gap-2 px-6 py-2 border border-yellow-600/30 text-yellow-500 font-black uppercase tracking-widest hover:bg-yellow-600/10 transition-all"
+                                    onClick={() => exp.img && setSelectedCert(exp.img)}
+                                    className={`mt-8 flex items-center gap-2 px-6 py-2 border border-yellow-600/30 text-yellow-500 font-black uppercase tracking-widest hover:bg-yellow-600/10 transition-all ${!exp.img && 'opacity-50 cursor-not-allowed'}`}
                                     style={{ fontSize: '10px' }}
                                 >
                                     <Award size={14} /> View Certificate
@@ -729,12 +733,23 @@ export default function App() {
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                className="bg-stone-900/80 backdrop-blur-md border border-red-900/30 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-xl min-h-[120px]"
+                                className="bg-stone-900/80 backdrop-blur-md border border-red-900/30 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-xl min-h-[140px] relative overflow-hidden"
                             >
-                                <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all" />
-                                <p className="text-white font-bold text-base md:text-lg leading-tight tracking-tight uppercase">
-                                    {cert}
-                                </p>
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-cover bg-center" style={{ backgroundImage: `url("${cert.img}")` }} />
+                                <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all relative z-10" />
+                                <div className="relative z-10 flex flex-col justify-center">
+                                    <p className="text-white font-bold text-sm md:text-base leading-tight tracking-tight uppercase mb-2">
+                                        {cert.name}
+                                    </p>
+                                    <button 
+                                        onClick={() => {
+                                            if (cert.img) setSelectedCert(cert.img);
+                                        }}
+                                        className={`text-[9px] text-yellow-500 font-black tracking-widest uppercase hover:text-yellow-400 transition-colors flex items-center gap-1 ${!cert.img && 'opacity-30 cursor-not-allowed'}`}
+                                    >
+                                        <Award size={10} /> {cert.img ? 'View Credential' : 'Under Review'}
+                                    </button>
+                                </div>
                             </motion.div>
                         ))}
                     </div>
@@ -746,10 +761,9 @@ export default function App() {
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
                         backgroundImage: 'url("/assets/Achivements/1141602-black-dragon-wallpaper-hd-1920x1080-for-mobile-hd.jpg")',
-                        filter: 'brightness(0.25) contrast(1.1)',
+                        filter: 'brightness(1) contrast(1)',
                     }}
                 />
-                <div className="absolute inset-0 bg-stone-950/60 z-0" />
 
                 <div className="container mx-auto px-6 md:px-10 relative z-10">
                     <div className="text-center mb-16">
@@ -913,7 +927,7 @@ export default function App() {
             </footer>
 
             {/* Certificate Lightbox */}
-            {isCertModalOpen && (
+            {selectedCert && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 md:p-10">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -921,21 +935,18 @@ export default function App() {
                         className="relative max-w-7xl w-full h-full flex flex-col items-center justify-center"
                     >
                         <button
-                            onClick={() => setIsCertModalOpen(false)}
+                            onClick={() => setSelectedCert(null)}
                             className="absolute top-0 right-0 md:-top-10 md:-right-10 text-white/70 hover:text-white transition-colors p-4 md:p-0 z-[110]"
                         >
                             <span className="text-4xl font-light font-sans">&times;</span>
                         </button>
                         <div className="w-full h-full overflow-auto flex items-center justify-center custom-scrollbar">
                             <img
-                                src="/assets/certificates/certificates.jpg"
-                                alt="Certificates Gallery"
-                                className="max-w-none md:max-w-full h-auto object-contain shadow-[0_0_100px_rgba(153,27,27,0.3)] border border-white/10"
+                                src={selectedCert}
+                                alt="Certificate"
+                                className="max-w-[80%] max-h-[80vh] object-contain shadow-[0_0_100px_rgba(153,27,27,0.3)] border border-white/10"
                             />
                         </div>
-                        <p className="mt-4 text-stone-500 font-bold uppercase tracking-widest text-[10px]">
-                            Scroll to explore all certificates
-                        </p>
                     </motion.div>
                 </div>
             )}
