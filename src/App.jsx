@@ -733,7 +733,7 @@ export default function App() {
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                className="bg-stone-900/80 backdrop-blur-md border border-red-900/30 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-xl min-h-[140px] relative overflow-hidden"
+                                className="bg-transparent backdrop-blur-sm border border-white/10 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-2xl min-h-[140px] relative overflow-hidden"
                             >
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-cover bg-center" style={{ backgroundImage: `url("${cert.img}")` }} />
                                 <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all relative z-10" />
@@ -778,7 +778,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: idx * 0.1 }}
-                                className="bg-stone-900/95 border border-stone-800/60 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-md"
+                                className="bg-transparent border border-white/10 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-sm"
                             >
                                 <div className="flex items-start gap-5">
                                     <div className="mt-1">
