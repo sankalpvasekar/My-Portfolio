@@ -7,29 +7,44 @@ body,
 #root {
     margin: 0;
     min-height: 100%;
+    /* Firefox scrollbar */
+    scrollbar-color: rgba(153, 27, 27, 0.7) rgba(0, 0, 0, 0.95);
+    scrollbar-width: thin;
 }
 
 * {
     box-sizing: border-box;
 }
 
-/* Custom Scrollbar for Modal */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+/* ── Dark Red / Black Custom Scrollbar ── */
+.custom-scrollbar::-webkit-scrollbar,
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
+.custom-scrollbar::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+    background: #000;
+    border-left: 1px solid rgba(153, 27, 27, 0.08);
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(153, 27, 27, 0.5);
-    border-radius: 4px;
+.custom-scrollbar::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #991b1b, #450a0a);
+    border-radius: 3px;
+    border: 1px solid rgba(153, 27, 27, 0.2);
 }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(153, 27, 27, 0.8);
+.custom-scrollbar::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #dc2626, #7f1d1d);
+    box-shadow: 0 0 8px rgba(220, 38, 38, 0.4);
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner,
+::-webkit-scrollbar-corner {
+    background: #000;
 }
 
 /* Hide scrollbar for clean UI but allow scrolling */

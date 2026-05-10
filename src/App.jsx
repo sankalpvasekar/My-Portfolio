@@ -249,6 +249,60 @@ const GhostMist = () => {
     );
 };
 
+const SocialSidebar = () => (
+    <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="fixed left-0 top-0 h-full z-40 hidden lg:flex flex-col items-center justify-end pb-10 pointer-events-none"
+        style={{ paddingLeft: '18px' }}
+    >
+        <div className="flex flex-col items-center gap-5 pointer-events-auto">
+            <motion.a
+                href={PERSONAL_INFO.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="GitHub"
+                whileHover={{ scale: 1.2, color: '#EAB308', filter: 'drop-shadow(0 0 8px rgba(234,179,8,0.7))' }}
+                className="text-stone-500 hover:text-yellow-400 transition-all duration-300"
+            >
+                <Github size={18} />
+            </motion.a>
+            <motion.a
+                href={PERSONAL_INFO.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="LinkedIn"
+                whileHover={{ scale: 1.2, color: '#EAB308', filter: 'drop-shadow(0 0 8px rgba(234,179,8,0.7))' }}
+                className="text-stone-500 hover:text-yellow-400 transition-all duration-300"
+            >
+                <Linkedin size={18} />
+            </motion.a>
+            <motion.a
+                href={PERSONAL_INFO.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Instagram"
+                whileHover={{ scale: 1.2, color: '#EAB308', filter: 'drop-shadow(0 0 8px rgba(234,179,8,0.7))' }}
+                className="text-stone-500 hover:text-yellow-400 transition-all duration-300"
+            >
+                <Instagram size={18} />
+            </motion.a>
+            <motion.a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Email"
+                whileHover={{ scale: 1.2, color: '#EAB308', filter: 'drop-shadow(0 0 8px rgba(234,179,8,0.7))' }}
+                className="text-stone-500 hover:text-yellow-400 transition-all duration-300"
+            >
+                <Mail size={18} />
+            </motion.a>
+            <div className="w-px h-20 bg-gradient-to-b from-red-800 to-transparent mt-2" />
+        </div>
+    </motion.div>
+);
+
 const PERSONAL_INFO = {
     name: 'Sankalp Vasekar',
     title: 'Computer Engineer | AI/ML Engineer | Data Analyst',
@@ -455,6 +509,7 @@ export default function App() {
     return (
         <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-screen h-screen overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
+            <SocialSidebar />
 
             <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-10 py-3 md:py-6 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0 bg-black/95 backdrop-blur-md border-b border-stone-900">
                 <div className="text-2xl md:text-3xl font-serif font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
