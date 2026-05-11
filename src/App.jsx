@@ -459,28 +459,28 @@ export default function App() {
             <GhostMist />
 
 
-            <nav className="fixed top-0 left-0 w-full z-50 px-4 md:px-10 py-3 md:py-6 flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0 bg-black/95 backdrop-blur-md border-b border-stone-900">
-                <div className="text-2xl md:text-3xl font-serif font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
+            <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex flex-row justify-between items-center bg-black/95 backdrop-blur-md border-b border-stone-900">
+                <div className="text-2xl font-serif font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
                     PORTFOLIO
                 </div>
-                <div className="flex items-center gap-2 md:gap-3">
+                <div className="flex items-center gap-3">
                     <button
                         onClick={() => scrollTo('projects')}
-                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black bg-stone-900/50 md:bg-transparent"
+                        className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black"
                         style={{ fontSize: '9px' }}
                     >
                         Projects
                     </button>
                     <button
                         onClick={() => scrollTo('skills')}
-                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black bg-stone-900/50 md:bg-transparent"
+                        className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black"
                         style={{ fontSize: '9px' }}
                     >
                         Skills
                     </button>
                     <button
                         onClick={() => scrollTo('certifications')}
-                        className="px-3 md:px-6 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black bg-stone-900/50 md:bg-transparent"
+                        className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black"
                         style={{ fontSize: '9px' }}
                     >
                         Certificates
@@ -518,13 +518,13 @@ export default function App() {
 
                 <div className="container mx-auto px-6 md:px-10 relative z-20">
                     {/* Text lives in left 55% on desktop, full-width on mobile */}
-                    <div className="w-full md:max-w-[55%]">
+                    <div className="max-w-[55%]">
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
                             <motion.h1
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
-                                className="text-[42px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl"
+                                className="text-8xl font-serif font-black leading-none mb-10 tracking-tighter text-white uppercase drop-shadow-2xl"
                             >
                                 {PERSONAL_INFO.name.split(' ')[0]} <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
@@ -535,7 +535,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: 0.1 }}
-                                className="text-sm md:text-lg text-stone-200 mb-10 md:mb-12 max-w-xl leading-relaxed md:leading-8 font-medium"
+                                className="text-lg text-stone-200 mb-12 max-w-xl leading-8 font-medium"
                             >
                                 {PERSONAL_INFO.summary}
                             </motion.p>
@@ -555,7 +555,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="training" className="relative py-16 md:py-32 min-h-screen flex flex-col justify-center snap-start snap-always">
+            <section id="training" className="relative py-32 min-h-screen flex flex-col justify-center snap-start snap-always">
                 <FallingRedLeaves />
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
@@ -566,8 +566,8 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-black/35 z-0" />
 
-                <div className="container mx-auto px-4 md:px-10 relative z-10">
-                    <div className="mb-12 md:mb-20">
+                <div className="container mx-auto px-10 relative z-10">
+                    <div className="mb-20">
                         <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl sm:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
                             TRAINING & INTERNSHIPS
                         </motion.h3>
@@ -580,7 +580,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3 }}
-                                className="bg-stone-900/90 border p-6 md:p-12 hover:border-yellow-500 transition-all group shadow-2xl relative"
+                                className="bg-stone-900/90 border p-12 hover:border-yellow-500 transition-all group shadow-2xl relative"
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
                             >
                                 <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-red-800 opacity-40" />
@@ -593,10 +593,10 @@ export default function App() {
                                         {exp.year}
                                     </p>
                                 </div>
-                                <h5 className="text-white text-base md:text-xl font-bold mb-6 tracking-wide flex items-center gap-3">
+                                <h5 className="text-white text-xl font-bold mb-6 tracking-wide flex items-center gap-3">
                                     <span className="w-2 h-2 rounded-full bg-yellow-500" /> {exp.role}
                                 </h5>
-                                <p className="text-gray-100 text-sm md:text-lg leading-relaxed font-medium bg-black/20 p-3 md:p-4 border-l-2 border-yellow-600">
+                                <p className="text-gray-100 text-lg leading-relaxed font-medium bg-black/20 p-4 border-l-2 border-yellow-600">
                                     {exp.desc}
                                 </p>
                                 <motion.button
@@ -614,7 +614,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="projects" className="relative py-16 md:py-32 min-h-screen overflow-hidden snap-start snap-always">
+            <section id="projects" className="relative py-32 min-h-screen overflow-hidden snap-start snap-always">
                 <FallingWhiteStars />
                 <FallingWhiteSnow />
                 <div
@@ -626,14 +626,14 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-black/20 z-0" />
 
-                <div className="container mx-auto px-4 md:px-10 relative z-10">
-                    <div className="text-center mb-12 md:mb-24">
-                        <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                <div className="container mx-auto px-10 relative z-10">
+                    <div className="text-center mb-24">
+                        <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             PROJECTS
                         </motion.h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div className="grid grid-cols-3 gap-10">
                         {PROJECTS.map((p, i) => (
                             <motion.div
                                 key={i}
@@ -641,7 +641,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3 }}
-                                className="bg-black/75 border p-6 md:p-12 group shadow-2xl relative overflow-hidden backdrop-blur-sm"
+                                className="bg-black/75 border p-12 group shadow-2xl relative overflow-hidden backdrop-blur-sm"
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-700 to-transparent opacity-10 blur-3xl" />
@@ -650,7 +650,7 @@ export default function App() {
                                     {p.tagline}
                                 </p>
                                 <div className="flex items-start justify-between gap-3 mb-6">
-                                    <motion.h4 initial={{ opacity: 0, y: 5 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-lg md:text-2xl font-serif font-black text-white uppercase tracking-tight leading-tight">{p.title}</motion.h4>
+                                    <motion.h4 initial={{ opacity: 0, y: 5 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl font-serif font-black text-white uppercase tracking-tight leading-tight">{p.title}</motion.h4>
                                     <a
                                         href={p.github}
                                         target="_blank"
@@ -674,7 +674,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="skills" className="relative py-16 md:py-32 min-h-screen flex items-center overflow-hidden snap-start snap-always scroll-mt-20">
+            <section id="skills" className="relative py-32 min-h-screen flex items-center overflow-hidden snap-start snap-always scroll-mt-20">
                 <FallingWhiteSnow />
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
@@ -685,14 +685,14 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-stone-950/35 z-0" />
 
-                <div className="container mx-auto px-6 md:px-10 relative z-10">
-                    <div className="text-center mb-16 md:mb-24">
-                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-5xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                <div className="container mx-auto px-10 relative z-10">
+                    <div className="text-center mb-24">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             SKILLS
                         </motion.h3>
                     </div>
 
-                    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-10 place-items-center">
+                    <div className="grid grid-cols-6 gap-10 place-items-center">
                         {TECH_ARSENAL.map((skill, i) => (
                             <motion.div
                                 key={i}
@@ -706,7 +706,7 @@ export default function App() {
                                     animate={{ y: [0, -10, 0] }}
                                     transition={{ duration: 3, repeat: Infinity, delay: i * 0.1 }}
                                     whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(234, 179, 8, 0.4)' }}
-                                    className="w-20 h-20 md:w-32 md:h-32 rounded-full bg-stone-950 border-2 flex items-center justify-center transition-all cursor-crosshair overflow-hidden p-4 md:p-5"
+                                    className="w-32 h-32 rounded-full bg-stone-950 border-2 flex items-center justify-center transition-all cursor-crosshair overflow-hidden p-5"
                                     style={{ borderColor: 'rgba(234, 179, 8, 0.5)' }}
                                 >
                                     {skill.type === 'img' ? (
@@ -719,17 +719,17 @@ export default function App() {
                                             }}
                                         />
                                     ) : (
-                                        <div className="group-hover:scale-110 transition-transform scale-75 md:scale-100">{skill.icon}</div>
+                                        <div className="group-hover:scale-110 transition-transform">{skill.icon}</div>
                                     )}
                                 </motion.div>
-                                <h4 className="mt-4 md:mt-6 text-white font-black uppercase tracking-widest text-[8px] md:text-[10px]">{skill.name}</h4>
+                                <h4 className="mt-6 text-white font-black uppercase tracking-widest text-[10px]">{skill.name}</h4>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <section id="certifications" className="relative py-16 md:py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="certifications" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
@@ -739,9 +739,9 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-black/40 z-0" />
 
-                <div className="container mx-auto px-6 md:px-10 relative z-10">
+                <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-16">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-5xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             CERTIFICATIONS
                         </motion.h3>
                         <motion.button
@@ -754,19 +754,19 @@ export default function App() {
                             View Certificate Gallery
                         </motion.button>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {CERTIFICATIONS.map((cert, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                className="bg-transparent backdrop-blur-sm border border-white/10 p-5 md:p-8 flex items-center gap-4 md:gap-6 group hover:border-yellow-600/50 transition-all shadow-2xl min-h-[110px] md:min-h-[140px] relative overflow-hidden"
+                                className="bg-transparent backdrop-blur-sm border border-white/10 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-2xl min-h-[140px] relative overflow-hidden"
                             >
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-cover bg-center" style={{ backgroundImage: `url("${cert.img}")` }} />
                                 <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all relative z-10" />
                                 <div className="relative z-10 flex flex-col justify-center">
-                                    <p className="text-white font-bold text-sm md:text-base leading-tight tracking-tight uppercase mb-2">
+                                    <p className="text-white font-bold text-base leading-tight tracking-tight uppercase mb-2">
                                         {cert.name}
                                     </p>
                                     <button 
@@ -784,7 +784,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="achievements" className="relative py-16 md:py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="achievements" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
@@ -793,27 +793,27 @@ export default function App() {
                     }}
                 />
 
-                <div className="container mx-auto px-6 md:px-10 relative z-10">
+                <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-16">
-                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-5xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             ACHIEVEMENTS
                         </motion.h3>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-2 gap-10 max-w-6xl mx-auto">
                         {ACHIEVEMENTS.map((ach, idx) => (
                             <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: idx * 0.1 }}
-                                className="bg-transparent border border-white/10 p-5 md:p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-sm"
+                                className="bg-transparent border border-white/10 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-sm"
                             >
                                 <div className="flex items-start gap-5">
                                     <div className="mt-1">
                                         <Award size={32} className="text-yellow-500 group-hover:scale-110 transition-transform" />
                                     </div>
                                     <div>
-                                        <h4 className="text-lg md:text-2xl font-black text-white uppercase tracking-tight mb-2">{ach.title}</h4>
+                                        <h4 className="text-2xl font-black text-white uppercase tracking-tight mb-2">{ach.title}</h4>
                                         <p className="text-yellow-600 font-bold uppercase text-xs tracking-widest mb-4">{ach.place}</p>
                                         <p className="text-stone-300 leading-relaxed italic">"{ach.description}"</p>
                                     </div>
@@ -824,7 +824,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="education" className="relative py-16 md:py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="education" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
                 <FallingRedLeaves />
                 <FallingCherryBlossoms />
                 <div
@@ -836,9 +836,9 @@ export default function App() {
                 />
                 <div className="absolute inset-0 bg-black/25 z-0" />
 
-                <div className="container mx-auto px-6 md:px-10 relative z-10">
+                <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-14">
-                        <motion.h3 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-5xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             EDUCATION
                         </motion.h3>
                     </div>
@@ -846,25 +846,25 @@ export default function App() {
                         {EDUCATION.map((edu, idx) => (
                             <div
                                 key={idx}
-                                className="max-w-6xl mx-auto bg-stone-950/75 border border-yellow-700/40 p-6 md:p-10 shadow-2xl relative backdrop-blur-sm"
+                                className="max-w-6xl mx-auto bg-stone-950/75 border border-yellow-700/40 p-10 shadow-2xl relative backdrop-blur-sm"
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.2)' }}
                             >
-                                <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-center">
+                                <div className="flex flex-row gap-10 items-center">
                                     <div
-                                        className={`w-24 h-24 md:w-36 md:h-36 bg-stone-900 flex items-center justify-center border border-yellow-900 shadow-inner p-1 overflow-hidden ${edu.logoCircle ? 'rounded-full' : 'rounded-md'}`}
+                                        className={`w-36 h-36 bg-stone-900 flex items-center justify-center border border-yellow-900 shadow-inner p-1 overflow-hidden ${edu.logoCircle ? 'rounded-full' : 'rounded-md'}`}
                                         style={{ borderColor: 'rgba(146, 64, 14, 0.3)' }}
                                     >
                                         <img src={edu.logoPath} alt={`${edu.school} Logo`} className="w-full h-full object-contain" />
                                     </div>
-                                    <div className="text-center md:text-left">
-                                        <motion.h3 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-xl md:text-4xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 mb-4 tracking-tighter uppercase leading-tight">
+                                    <div className="text-left">
+                                        <motion.h3 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 mb-4 tracking-tighter uppercase leading-tight">
                                             {edu.school}
                                         </motion.h3>
                                         <div className="space-y-2 text-white">
-                                            <p className="text-sm md:text-xl font-semibold">{edu.degree}</p>
-                                            <p className="text-xs md:text-lg font-semibold text-stone-100">{edu.lineTwo}</p>
-                                            <p className="text-xs md:text-lg font-semibold text-stone-100">{edu.lineThree}</p>
-                                            <p className="text-sm md:text-xl font-semibold text-yellow-300 pt-2">{edu.score}</p>
+                                            <p className="text-xl font-semibold">{edu.degree}</p>
+                                            <p className="text-lg font-semibold text-stone-100">{edu.lineTwo}</p>
+                                            <p className="text-lg font-semibold text-stone-100">{edu.lineThree}</p>
+                                            <p className="text-xl font-semibold text-yellow-300 pt-2">{edu.score}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -880,11 +880,11 @@ export default function App() {
                 <div className="container mx-auto px-4 md:px-10 relative z-20">
                     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
                         <div className="text-center lg:text-left">
-                            <motion.h2 initial={{ opacity: 0, y: -18, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-red-800 text-3xl md:text-5xl font-serif font-black mb-8 md:mb-12 uppercase tracking-[0.2em] md:tracking-[0.4em]">
+                            <motion.h2 initial={{ opacity: 0, y: -18, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-red-800 text-5xl font-serif font-black mb-12 uppercase tracking-[0.4em]">
                                 FOLLOW ME
                             </motion.h2>
 
-                            <div className="flex justify-center lg:justify-start gap-6 md:gap-12 mb-10 md:mb-16">
+                            <div className="flex justify-start gap-12 mb-16">
                                 <motion.a
                                     href={PERSONAL_INFO.socials.github}
                                     target="_blank"
@@ -940,7 +940,7 @@ export default function App() {
 
                         </div>
 
-                        <div className="relative h-48 md:h-52 w-fit border border-yellow-700/40 bg-black/40 backdrop-blur-sm rounded-md overflow-hidden inline-flex items-center justify-center p-1">
+                        <div className="relative h-52 w-fit border border-yellow-700/40 bg-black/40 backdrop-blur-sm rounded-md overflow-hidden inline-flex items-center justify-center p-1">
                             <img
                                 src="/assets/footer/profile-image.jpg"
                                 alt="Profile Upload"
