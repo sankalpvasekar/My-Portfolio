@@ -457,23 +457,13 @@ export default function App() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const isMobile = window.innerWidth < 768;
-            const scrollPosition = isMobile 
-                ? window.scrollX + window.innerWidth / 2 
-                : window.scrollY + window.innerHeight / 2;
-
+            const scrollPosition = window.scrollX + window.innerWidth / 2;
             sections.forEach((id, idx) => {
                 const el = document.getElementById(id);
                 if (el) {
-                    const { offsetLeft, offsetWidth, offsetTop, offsetHeight } = el;
-                    if (isMobile) {
-                        if (scrollPosition >= offsetLeft && scrollPosition < offsetLeft + offsetWidth) {
-                            setCurrentSectionIdx(idx);
-                        }
-                    } else {
-                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                            setCurrentSectionIdx(idx);
-                        }
+                    const { offsetLeft, offsetWidth } = el;
+                    if (scrollPosition >= offsetLeft && scrollPosition < offsetLeft + offsetWidth) {
+                        setCurrentSectionIdx(idx);
                     }
                 }
             });
@@ -501,24 +491,40 @@ export default function App() {
     };
 
     return (
-        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen flex flex-row md:flex-col overflow-x-scroll md:overflow-x-hidden overflow-y-hidden md:overflow-y-auto overscroll-none snap-x md:snap-y snap-mandatory scroll-smooth custom-scrollbar">
+        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen flex flex-row overflow-x-scroll overflow-y-hidden overscroll-none snap-x snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
 
-            {/* Mobile Navigation Arrows */}
-            <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[60] flex flex-row gap-8 md:hidden">
+            {/* Mobile Navigation Arrows - Middle Sides */}
+            <button
+                onClick={scrollPrev}
+                className="fixed left-4 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm md:hidden shadow-[0_0_15px_rgba(153,27,27,0.3)]"
+                disabled={currentSectionIdx === 0}
+            >
+                <ChevronLeft size={28} />
+            </button>
+            <button
+                onClick={scrollNext}
+                className="fixed right-4 top-1/2 -translate-y-1/2 z-[60] w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm md:hidden shadow-[0_0_15px_rgba(153,27,27,0.3)]"
+                disabled={currentSectionIdx === sections.length - 1}
+            >
+                <ChevronRight size={28} />
+            </button>
+
+            {/* Desktop Navigation Arrows - Bottom Center */}
+            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[60] hidden md:flex flex-row gap-6">
                 <button
                     onClick={scrollPrev}
-                    className="w-14 h-14 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
+                    className="w-12 h-12 rounded-full bg-stone-900/80 border border-stone-700 flex items-center justify-center text-stone-400 hover:text-white hover:border-red-500 transition-all backdrop-blur-md"
                     disabled={currentSectionIdx === 0}
                 >
-                    <ChevronLeft size={32} />
+                    <ChevronLeft size={24} />
                 </button>
                 <button
                     onClick={scrollNext}
-                    className="w-14 h-14 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
+                    className="w-12 h-12 rounded-full bg-stone-900/80 border border-stone-700 flex items-center justify-center text-stone-400 hover:text-white hover:border-red-500 transition-all backdrop-blur-md"
                     disabled={currentSectionIdx === sections.length - 1}
                 >
-                    <ChevronRight size={32} />
+                    <ChevronRight size={24} />
                 </button>
             </div>
 
