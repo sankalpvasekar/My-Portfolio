@@ -9,6 +9,8 @@ import {
     Bot,
     Mail,
     Award,
+    ChevronUp,
+    ChevronDown,
 } from 'lucide-react';
 
 const FallingWhiteFeathers = () => {
@@ -449,14 +451,65 @@ const EDUCATION = [
 export default function App() {
     const [selectedCert, setSelectedCert] = useState(null);
 
+    const sections = ['hero', 'training', 'projects', 'skills', 'certifications', 'achievements', 'education', 'contact'];
+    const [currentSectionIdx, setCurrentSectionIdx] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            sections.forEach((id, idx) => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const { offsetTop, offsetHeight } = el;
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        setCurrentSectionIdx(idx);
+                    }
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [sections]);
+
     const scrollTo = (id) => {
         const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const scrollNext = () => {
+        const nextIdx = Math.min(currentSectionIdx + 1, sections.length - 1);
+        scrollTo(sections[nextIdx]);
+    };
+
+    const scrollPrev = () => {
+        const prevIdx = Math.max(currentSectionIdx - 1, 0);
+        scrollTo(sections[prevIdx]);
     };
 
     return (
         <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
+
+            {/* Mobile Navigation Arrows */}
+            <div className="fixed right-4 top-1/2 -translate-y-1/2 z-[60] flex flex-col gap-4 md:hidden">
+                <button
+                    onClick={scrollPrev}
+                    className="w-12 h-12 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
+                    disabled={currentSectionIdx === 0}
+                >
+                    <ChevronUp size={28} />
+                </button>
+                <button
+                    onClick={scrollNext}
+                    className="w-12 h-12 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
+                    disabled={currentSectionIdx === sections.length - 1}
+                >
+                    <ChevronDown size={28} />
+                </button>
+            </div>
 
 
             <nav className="fixed top-0 left-0 w-full z-50 px-6 py-4 flex flex-row justify-between items-center bg-black/95 backdrop-blur-md border-b border-stone-900">
@@ -555,7 +608,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="training" className="relative py-32 min-h-screen flex flex-col justify-center snap-start snap-always">
+            <section id="training" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen flex flex-col justify-center snap-start snap-always">
                 <FallingRedLeaves />
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
@@ -568,7 +621,7 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="mb-20">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl sm:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
                             TRAINING & INTERNSHIPS
                         </motion.h3>
                     </div>
@@ -580,7 +633,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3 }}
-                                className="bg-stone-900/90 border p-12 hover:border-yellow-500 transition-all group shadow-2xl relative"
+                                className="bg-stone-900/90 border p-6 md:p-12 hover:border-yellow-500 transition-all group shadow-2xl relative"
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
                             >
                                 <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-red-800 opacity-40" />
@@ -614,7 +667,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="projects" className="relative py-32 min-h-screen overflow-hidden snap-start snap-always">
+            <section id="projects" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen overflow-hidden snap-start snap-always">
                 <FallingWhiteStars />
                 <FallingWhiteSnow />
                 <div
@@ -628,7 +681,7 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-24">
-                        <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             PROJECTS
                         </motion.h3>
                     </div>
@@ -641,7 +694,7 @@ export default function App() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3 }}
-                                className="bg-black/75 border p-12 group shadow-2xl relative overflow-hidden backdrop-blur-sm"
+                                className="bg-black/75 border p-8 md:p-12 group shadow-2xl relative overflow-hidden backdrop-blur-sm"
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
                             >
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-700 to-transparent opacity-10 blur-3xl" />
@@ -674,7 +727,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="skills" className="relative py-32 min-h-screen flex items-center overflow-hidden snap-start snap-always scroll-mt-20">
+            <section id="skills" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen flex items-center overflow-hidden snap-start snap-always scroll-mt-20">
                 <FallingWhiteSnow />
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
@@ -687,7 +740,7 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-24">
-                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             SKILLS
                         </motion.h3>
                     </div>
@@ -729,7 +782,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="certifications" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="certifications" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
@@ -741,7 +794,7 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-16">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             CERTIFICATIONS
                         </motion.h3>
                         <motion.button
@@ -784,7 +837,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="achievements" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="achievements" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
                 <div
                     className="absolute inset-0 z-0 bg-cover bg-center"
                     style={{
@@ -795,7 +848,7 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-16">
-                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             ACHIEVEMENTS
                         </motion.h3>
                     </div>
@@ -824,7 +877,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="education" className="relative py-32 min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="education" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
                 <FallingRedLeaves />
                 <FallingCherryBlossoms />
                 <div
@@ -838,7 +891,7 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-14">
-                        <motion.h3 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
+                        <motion.h3 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
                             EDUCATION
                         </motion.h3>
                     </div>
@@ -857,7 +910,7 @@ export default function App() {
                                         <img src={edu.logoPath} alt={`${edu.school} Logo`} className="w-full h-full object-contain" />
                                     </div>
                                     <div className="text-left">
-                                        <motion.h3 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 mb-4 tracking-tighter uppercase leading-tight">
+                                        <motion.h3 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl md:text-4xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 mb-4 tracking-tighter uppercase leading-tight">
                                             {edu.school}
                                         </motion.h3>
                                         <div className="space-y-2 text-white">
@@ -880,7 +933,7 @@ export default function App() {
                 <div className="container mx-auto px-4 md:px-10 relative z-20">
                     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
                         <div className="text-center lg:text-left">
-                            <motion.h2 initial={{ opacity: 0, y: -18, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-red-800 text-5xl font-serif font-black mb-12 uppercase tracking-[0.4em]">
+                            <motion.h2 initial={{ opacity: 0, y: -18, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-red-800 text-3xl md:text-5xl font-serif font-black mb-8 md:mb-12 uppercase tracking-[0.2em] md:tracking-[0.4em]">
                                 FOLLOW ME
                             </motion.h2>
 
