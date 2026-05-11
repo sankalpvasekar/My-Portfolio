@@ -496,21 +496,21 @@ export default function App() {
         <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen flex flex-col overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
 
-            {/* Mobile Navigation Arrows - Vertical */}
-            <div className="fixed bottom-10 right-6 z-[60] flex flex-col gap-4 md:hidden">
+            {/* Mobile Navigation Arrows - Left/Right for Vertical Scroll */}
+            <div className="fixed bottom-10 inset-x-6 z-[60] flex flex-row justify-between md:hidden">
                 <button
                     onClick={scrollPrev}
                     className="w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm shadow-[0_0_15px_rgba(153,27,27,0.3)]"
                     disabled={currentSectionIdx === 0}
                 >
-                    <ChevronUp size={28} />
+                    <ChevronLeft size={28} />
                 </button>
                 <button
                     onClick={scrollNext}
                     className="w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm shadow-[0_0_15px_rgba(153,27,27,0.3)]"
                     disabled={currentSectionIdx === sections.length - 1}
                 >
-                    <ChevronDown size={28} />
+                    <ChevronRight size={28} />
                 </button>
             </div>
 
