@@ -9,8 +9,8 @@ import {
     Bot,
     Mail,
     Award,
-    ChevronUp,
-    ChevronDown,
+    ChevronLeft,
+    ChevronRight,
 } from 'lucide-react';
 
 const FallingWhiteFeathers = () => {
@@ -450,18 +450,19 @@ const EDUCATION = [
 
 export default function App() {
     const [selectedCert, setSelectedCert] = useState(null);
+    const [isCertModalOpen, setIsCertModalOpen] = useState(false);
 
-    const sections = ['hero', 'training', 'projects', 'skills', 'certifications', 'achievements', 'education', 'contact'];
+    const sections = ['hero', 'training', 'projects', 'education', 'certifications', 'achievements', 'skills', 'contact'];
     const [currentSectionIdx, setCurrentSectionIdx] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            const scrollPosition = window.scrollX + window.innerWidth / 2;
             sections.forEach((id, idx) => {
                 const el = document.getElementById(id);
                 if (el) {
-                    const { offsetTop, offsetHeight } = el;
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                    const { offsetLeft, offsetWidth } = el;
+                    if (scrollPosition >= offsetLeft && scrollPosition < offsetLeft + offsetWidth) {
                         setCurrentSectionIdx(idx);
                     }
                 }
@@ -490,24 +491,24 @@ export default function App() {
     };
 
     return (
-        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
+        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen flex flex-row overflow-x-scroll overflow-y-hidden overscroll-none snap-x snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
 
             {/* Mobile Navigation Arrows */}
-            <div className="fixed right-4 top-1/2 -translate-y-1/2 z-[60] flex flex-col gap-4 md:hidden">
+            <div className="fixed bottom-10 left-1/2 -translate-x-1/2 z-[60] flex flex-row gap-8 md:hidden">
                 <button
                     onClick={scrollPrev}
-                    className="w-12 h-12 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
+                    className="w-14 h-14 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
                     disabled={currentSectionIdx === 0}
                 >
-                    <ChevronUp size={28} />
+                    <ChevronLeft size={32} />
                 </button>
                 <button
                     onClick={scrollNext}
-                    className="w-12 h-12 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
+                    className="w-14 h-14 rounded-full bg-red-900/80 border border-red-500 flex items-center justify-center text-white backdrop-blur-md shadow-[0_0_15px_rgba(153,27,27,0.5)]"
                     disabled={currentSectionIdx === sections.length - 1}
                 >
-                    <ChevronDown size={28} />
+                    <ChevronRight size={32} />
                 </button>
             </div>
 
@@ -517,37 +518,17 @@ export default function App() {
                     PORTFOLIO
                 </div>
                 <div className="flex items-center gap-3">
-                    <button
-                        onClick={() => scrollTo('projects')}
-                        className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black"
-                        style={{ fontSize: '9px' }}
-                    >
-                        Projects
-                    </button>
-                    <button
-                        onClick={() => scrollTo('skills')}
-                        className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black"
-                        style={{ fontSize: '9px' }}
-                    >
-                        Skills
-                    </button>
-                    <button
-                        onClick={() => scrollTo('certifications')}
-                        className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black"
-                        style={{ fontSize: '9px' }}
-                    >
-                        Certificates
-                    </button>
+                    <button onClick={() => scrollTo('projects')} className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black" style={{ fontSize: '9px' }}>Projects</button>
+                    <button onClick={() => scrollTo('skills')} className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black" style={{ fontSize: '9px' }}>Skills</button>
+                    <button onClick={() => scrollTo('certifications')} className="px-4 py-2 border border-stone-800 text-stone-300 hover:text-white transition-all uppercase tracking-widest font-black" style={{ fontSize: '9px' }}>Certificates</button>
                 </div>
             </nav>
 
-            <section id="hero" className="relative min-h-[100dvh] md:min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden snap-start snap-always">
+            <section id="hero" className="relative w-screen h-screen flex-shrink-0 flex items-center pt-32 md:pt-20 overflow-hidden snap-center snap-always">
                 <FallingWhiteFeathers />
                 <div className="absolute inset-y-0 right-0 w-1/2 z-10 pointer-events-none">
                     <FallingWhiteSnow />
                 </div>
-
-                {/* Background image — pinned right for mobile, centered for desktop */}
                 <div
                     className="absolute inset-0 z-0"
                     style={{
@@ -558,48 +539,19 @@ export default function App() {
                         filter: 'brightness(0.6) contrast(1.05)',
                     }}
                 />
-
-                {/* Gradient overlay for text readability (desktop optimized) */}
-                <div
-                    className="absolute inset-0 z-10 hidden md:block"
-                    style={{
-                        background: 'linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.25) 65%, transparent 100%)',
-                    }}
-                />
-                {/* Mobile extra top-down overlay for readability */}
-                {/* Mobile overlay removed as we are in desktop-only mode */}
-
+                <div className="absolute inset-0 z-10 hidden md:block" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.25) 65%, transparent 100%)' }} />
                 <div className="container mx-auto px-10 relative z-20">
-                    {/* Text lives in left 55% on desktop, full-width on mobile */}
                     <div className="w-full md:max-w-[55%]">
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                            <motion.h1
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4 }}
-                                className="text-[42px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl"
-                            >
+                            <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="text-[42px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl">
                                 {PERSONAL_INFO.name.split(' ')[0]} <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
-                                    {PERSONAL_INFO.name.split(' ')[1]}
-                                </span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">{PERSONAL_INFO.name.split(' ')[1]}</span>
                             </motion.h1>
-                            <motion.p
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: 0.1 }}
-                                className="text-sm md:text-lg text-stone-200 mb-10 md:mb-12 max-w-xl leading-relaxed md:leading-8 font-medium"
-                            >
+                            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="text-sm md:text-lg text-stone-200 mb-10 md:mb-12 max-w-xl leading-relaxed md:leading-8 font-medium">
                                 {PERSONAL_INFO.summary}
                             </motion.p>
-
-                             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-start">
-                                <a
-                                    href="/assets/resume/CSE.pdf"
-                                    download="Sankalp_Vasekar_Resume.pdf"
-                                    className="w-full sm:w-auto px-8 md:px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3"
-                                    style={{ boxShadow: '0 0 30px rgba(179, 27, 27, 0.6)', borderColor: 'rgba(234, 179, 8, 0.3)' }}
-                                >
+                            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-start">
+                                <a href="/assets/resume/CSE.pdf" download="Sankalp_Vasekar_Resume.pdf" className="w-full sm:w-auto px-8 md:px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3" style={{ boxShadow: '0 0 30px rgba(179, 27, 27, 0.6)', borderColor: 'rgba(234, 179, 8, 0.3)' }}>
                                     <Download size={20} /> Resume
                                 </a>
                             </div>
@@ -608,118 +560,51 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="training" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen flex flex-col justify-center snap-start snap-always">
+            <section id="training" className="relative w-screen h-screen flex-shrink-0 py-20 md:py-32 flex flex-col justify-center snap-center snap-always">
                 <FallingRedLeaves />
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("/assets/chronicles/training-bg.jpg")',
-                        filter: 'brightness(0.45)',
-                    }}
-                />
+                <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/chronicles/training-bg.jpg")', filter: 'brightness(0.45)' }} />
                 <div className="absolute inset-0 bg-black/35 z-0" />
-
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="mb-20">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
-                            TRAINING & INTERNSHIPS
-                        </motion.h3>
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-3xl sm:text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">TRAINING & INTERNSHIPS</motion.h3>
                     </div>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {EXPERIENCE.map((exp, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="bg-stone-900/90 border p-6 md:p-12 hover:border-yellow-500 transition-all group shadow-2xl relative"
-                                style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
-                            >
+                            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="bg-stone-900/90 border p-6 md:p-12 hover:border-yellow-500 transition-all group shadow-2xl relative" style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}>
                                 <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-red-800 opacity-40" />
-                                <motion.h4 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-500 uppercase tracking-tighter mb-2">
-                                    {exp.company}
-                                </motion.h4>
-                                <div className="flex items-center gap-2 mb-8">
-                                    <div className="h-px w-12 bg-yellow-700" />
-                                    <p className="text-yellow-700 font-black uppercase" style={{ letterSpacing: '0.2em', fontSize: '12px' }}>
-                                        {exp.year}
-                                    </p>
-                                </div>
-                                <h5 className="text-white text-xl font-bold mb-6 tracking-wide flex items-center gap-3">
-                                    <span className="w-2 h-2 rounded-full bg-yellow-500" /> {exp.role}
-                                </h5>
-                                <p className="text-gray-100 text-lg leading-relaxed font-medium bg-black/20 p-4 border-l-2 border-yellow-600">
-                                    {exp.desc}
-                                </p>
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => exp.img && setSelectedCert(exp.img)}
-                                    className={`mt-8 flex items-center gap-2 px-6 py-2 border border-yellow-600/30 text-yellow-500 font-black uppercase tracking-widest hover:bg-yellow-600/10 transition-all ${!exp.img && 'opacity-50 cursor-not-allowed'}`}
-                                    style={{ fontSize: '10px' }}
-                                >
-                                    <Award size={14} /> View Certificate
-                                </motion.button>
+                                <motion.h4 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-500 uppercase tracking-tighter mb-2">{exp.company}</motion.h4>
+                                <div className="flex items-center gap-2 mb-8"><div className="h-px w-12 bg-yellow-700" /><p className="text-yellow-700 font-black uppercase" style={{ letterSpacing: '0.2em', fontSize: '12px' }}>{exp.year}</p></div>
+                                <h5 className="text-white text-xl font-bold mb-6 tracking-wide flex items-center gap-3"><span className="w-2 h-2 rounded-full bg-yellow-500" /> {exp.role}</h5>
+                                <p className="text-gray-100 text-lg leading-relaxed font-medium bg-black/20 p-4 border-l-2 border-yellow-600">{exp.desc}</p>
+                                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => exp.img && setSelectedCert(exp.img)} className={`mt-8 flex items-center gap-2 px-6 py-2 border border-yellow-600/30 text-yellow-500 font-black uppercase tracking-widest hover:bg-yellow-600/10 transition-all ${!exp.img && 'opacity-50 cursor-not-allowed'}`} style={{ fontSize: '10px' }}><Award size={14} /> View Certificate</motion.button>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            <section id="projects" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen overflow-hidden snap-start snap-always">
+            <section id="projects" className="relative w-screen h-screen flex-shrink-0 py-20 md:py-32 overflow-hidden snap-center snap-always">
                 <FallingWhiteStars />
                 <FallingWhiteSnow />
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("/assets/relics/stone-temple.jpg")',
-                        filter: 'brightness(0.42)',
-                    }}
-                />
+                <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/relics/stone-temple.jpg")', filter: 'brightness(0.42)' }} />
                 <div className="absolute inset-0 bg-black/20 z-0" />
-
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-24">
-                        <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
-                            PROJECTS
-                        </motion.h3>
+                        <motion.h3 initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">PROJECTS</motion.h3>
                     </div>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {PROJECTS.map((p, i) => (
-                            <motion.div
-                                key={i}
-                                whileHover={{ y: -8 }}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="bg-black/75 border p-8 md:p-12 group shadow-2xl relative overflow-hidden backdrop-blur-sm"
-                                style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
-                            >
+                            <motion.div key={i} whileHover={{ y: -8 }} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="bg-black/75 border p-8 md:p-12 group shadow-2xl relative overflow-hidden backdrop-blur-sm" style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}>
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-700 to-transparent opacity-10 blur-3xl" />
                                 <div className={`h-1 w-full bg-gradient-to-r ${p.color} mb-8`} />
-                                <p className={`font-black uppercase tracking-widest mb-2 ${p.accent}`} style={{ fontSize: '10px' }}>
-                                    {p.tagline}
-                                </p>
+                                <p className={`font-black uppercase tracking-widest mb-2 ${p.accent}`} style={{ fontSize: '10px' }}>{p.tagline}</p>
                                 <div className="flex items-start justify-between gap-3 mb-6">
                                     <motion.h4 initial={{ opacity: 0, y: 5 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl font-serif font-black text-white uppercase tracking-tight leading-tight">{p.title}</motion.h4>
-                                    <a
-                                        href={p.github}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-11 h-11 min-w-11 min-h-11 rounded-full border border-stone-600 bg-black/70 flex items-center justify-center shrink-0 -mt-1 hover:border-yellow-500 transition-colors"
-                                    >
-                                        <Github size={19} className="text-stone-300" />
-                                    </a>
+                                    <a href={p.github} target="_blank" rel="noopener noreferrer" className="w-11 h-11 min-w-11 min-h-11 rounded-full border border-stone-600 bg-black/70 flex items-center justify-center shrink-0 -mt-1 hover:border-yellow-500 transition-colors"><Github size={19} className="text-stone-300" /></a>
                                 </div>
                                 <p className="text-white/90 leading-relaxed font-light mb-10 text-sm italic">"{p.description}"</p>
                                 <div className="flex flex-wrap gap-2 mt-auto">
-                                    {p.tags.slice(0, 3).map((tag) => (
-                                        <span key={tag} className="font-bold text-stone-400 border border-stone-800 px-2 py-1 uppercase" style={{ fontSize: '9px' }}>
-                                            {tag}
-                                        </span>
-                                    ))}
+                                    {p.tags.slice(0, 3).map((tag) => <span key={tag} className="font-bold text-stone-400 border border-stone-800 px-2 py-1 uppercase" style={{ fontSize: '9px' }}>{tag}</span>)}
                                 </div>
                             </motion.div>
                         ))}
@@ -727,192 +612,24 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="skills" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen flex items-center overflow-hidden snap-start snap-always scroll-mt-20">
-                <FallingWhiteSnow />
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("/assets/dojo/bamboo-forest.jpg")',
-                        filter: 'brightness(0.42)',
-                    }}
-                />
-                <div className="absolute inset-0 bg-stone-950/35 z-0" />
-
-                <div className="container mx-auto px-10 relative z-10">
-                    <div className="text-center mb-24">
-                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
-                            SKILLS
-                        </motion.h3>
-                    </div>
-
-                    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-10 place-items-center">
-                        {TECH_ARSENAL.map((skill, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, x: i % 6 < 3 ? -30 : 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.3, delay: (i % 6) * 0.04 }}
-                                viewport={{ once: false, amount: 0.15 }}
-                                className="flex flex-col items-center group"
-                            >
-                                <motion.div
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ duration: 3, repeat: Infinity, delay: i * 0.1 }}
-                                    whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(234, 179, 8, 0.4)' }}
-                                    className="w-32 h-32 rounded-full bg-stone-950 border-2 flex items-center justify-center transition-all cursor-crosshair overflow-hidden p-5"
-                                    style={{ borderColor: 'rgba(234, 179, 8, 0.5)' }}
-                                >
-                                    {skill.type === 'img' ? (
-                                        <img
-                                            src={skill.src}
-                                            alt={skill.name}
-                                            className="w-full h-full object-contain"
-                                            onError={(e) => {
-                                                e.currentTarget.style.display = 'none';
-                                            }}
-                                        />
-                                    ) : (
-                                        <div className="group-hover:scale-110 transition-transform">{skill.icon}</div>
-                                    )}
-                                </motion.div>
-                                <h4 className="mt-6 text-white font-black uppercase tracking-widest text-[10px]">{skill.name}</h4>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="certifications" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("/assets/certificates/certificates.jpg")',
-                        filter: 'brightness(0.35) blur(2px)',
-                    }}
-                />
-                <div className="absolute inset-0 bg-black/40 z-0" />
-
-                <div className="container mx-auto px-10 relative z-10">
-                    <div className="text-center mb-16">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
-                            CERTIFICATIONS
-                        </motion.h3>
-                        <motion.button
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 0.3 }}
-                            onClick={() => setIsCertModalOpen(true)}
-                            className="mt-6 px-8 py-3 bg-red-900/40 border border-red-500 text-red-100 font-bold uppercase tracking-widest hover:bg-red-700/60 transition-all text-sm backdrop-blur-sm"
-                        >
-                            View Certificate Gallery
-                        </motion.button>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                        {CERTIFICATIONS.map((cert, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.3, delay: idx * 0.05 }}
-                                className="bg-transparent backdrop-blur-sm border border-white/10 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-2xl min-h-[140px] relative overflow-hidden"
-                            >
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-cover bg-center" style={{ backgroundImage: `url("${cert.img}")` }} />
-                                <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all relative z-10" />
-                                <div className="relative z-10 flex flex-col justify-center">
-                                    <p className="text-white font-bold text-base leading-tight tracking-tight uppercase mb-2">
-                                        {cert.name}
-                                    </p>
-                                    <button 
-                                        onClick={() => {
-                                            if (cert.img) setSelectedCert(cert.img);
-                                        }}
-                                        className={`text-[9px] text-yellow-500 font-black tracking-widest uppercase hover:text-yellow-400 transition-colors flex items-center gap-1 ${!cert.img && 'opacity-30 cursor-not-allowed'}`}
-                                    >
-                                        <Award size={10} /> {cert.img ? 'View Credential' : 'Under Review'}
-                                    </button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="achievements" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("/assets/Achivements/1141602-black-dragon-wallpaper-hd-1920x1080-for-mobile-hd.jpg")',
-                        filter: 'brightness(1) contrast(1)',
-                    }}
-                />
-
-                <div className="container mx-auto px-10 relative z-10">
-                    <div className="text-center mb-16">
-                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
-                            ACHIEVEMENTS
-                        </motion.h3>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-                        {ACHIEVEMENTS.map((ach, idx) => (
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: idx * 0.1 }}
-                                className="bg-transparent border border-white/10 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-sm"
-                            >
-                                <div className="flex items-start gap-5">
-                                    <div className="mt-1">
-                                        <Award size={32} className="text-yellow-500 group-hover:scale-110 transition-transform" />
-                                    </div>
-                                    <div>
-                                        <h4 className="text-2xl font-black text-white uppercase tracking-tight mb-2">{ach.title}</h4>
-                                        <p className="text-yellow-600 font-bold uppercase text-xs tracking-widest mb-4">{ach.place}</p>
-                                        <p className="text-stone-300 leading-relaxed italic">"{ach.description}"</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section id="education" className="relative py-20 md:py-32 min-h-[100dvh] md:min-h-screen bg-black flex items-center snap-start snap-always scroll-mt-20">
+            <section id="education" className="relative w-screen h-screen flex-shrink-0 py-20 md:py-32 bg-black flex items-center snap-center snap-always">
                 <FallingRedLeaves />
                 <FallingCherryBlossoms />
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
-                    style={{
-                        backgroundImage: 'url("/assets/education/education-bg.jpg")',
-                        filter: 'brightness(0.35)',
-                    }}
-                />
+                <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/education/education-bg.jpg")', filter: 'brightness(0.35)' }} />
                 <div className="absolute inset-0 bg-black/25 z-0" />
-
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-14">
-                        <motion.h3 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">
-                            EDUCATION
-                        </motion.h3>
+                        <motion.h3 initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">EDUCATION</motion.h3>
                     </div>
                     <div className="space-y-8">
                         {EDUCATION.map((edu, idx) => (
-                            <div
-                                key={idx}
-                                className="max-w-6xl mx-auto bg-stone-950/75 border border-yellow-700/40 p-10 shadow-2xl relative backdrop-blur-sm"
-                                style={{ borderColor: 'rgba(234, 179, 8, 0.2)' }}
-                            >
+                            <div key={idx} className="max-w-6xl mx-auto bg-stone-950/75 border border-yellow-700/40 p-10 shadow-2xl relative backdrop-blur-sm" style={{ borderColor: 'rgba(234, 179, 8, 0.2)' }}>
                                 <div className="flex flex-row gap-10 items-center">
-                                    <div
-                                        className={`w-36 h-36 bg-stone-900 flex items-center justify-center border border-yellow-900 shadow-inner p-1 overflow-hidden ${edu.logoCircle ? 'rounded-full' : 'rounded-md'}`}
-                                        style={{ borderColor: 'rgba(146, 64, 14, 0.3)' }}
-                                    >
+                                    <div className={`w-36 h-36 bg-stone-900 flex items-center justify-center border border-yellow-900 shadow-inner p-1 overflow-hidden ${edu.logoCircle ? 'rounded-full' : 'rounded-md'}`} style={{ borderColor: 'rgba(146, 64, 14, 0.3)' }}>
                                         <img src={edu.logoPath} alt={`${edu.school} Logo`} className="w-full h-full object-contain" />
                                     </div>
                                     <div className="text-left">
-                                        <motion.h3 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl md:text-4xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 mb-4 tracking-tighter uppercase leading-tight">
-                                            {edu.school}
-                                        </motion.h3>
+                                        <motion.h3 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.35, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl md:text-4xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 mb-4 tracking-tighter uppercase leading-tight">{edu.school}</motion.h3>
                                         <div className="space-y-2 text-white">
                                             <p className="text-xl font-semibold">{edu.degree}</p>
                                             <p className="text-lg font-semibold text-stone-100">{edu.lineTwo}</p>
@@ -927,81 +644,93 @@ export default function App() {
                 </div>
             </section>
 
-            <footer id="contact" className="relative py-24 bg-black border-t border-stone-900 overflow-hidden snap-start snap-always">
+            <section id="certifications" className="relative w-screen h-screen flex-shrink-0 py-20 md:py-32 bg-black flex items-center snap-center snap-always">
+                <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/certificates/certificates.jpg")', filter: 'brightness(0.35) blur(2px)' }} />
+                <div className="absolute inset-0 bg-black/40 z-0" />
+                <div className="container mx-auto px-10 relative z-10">
+                    <div className="text-center mb-16">
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">CERTIFICATIONS</motion.h3>
+                        <motion.button initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.3 }} onClick={() => setIsCertModalOpen(true)} className="mt-6 px-8 py-3 bg-red-900/40 border border-red-500 text-red-100 font-bold uppercase tracking-widest hover:bg-red-700/60 transition-all text-sm backdrop-blur-sm">View Certificate Gallery</motion.button>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                        {CERTIFICATIONS.map((cert, idx) => (
+                            <motion.div key={idx} initial={{ opacity: 0, scale: 0.98 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.3, delay: idx * 0.05 }} className="bg-transparent backdrop-blur-sm border border-white/10 p-8 flex items-center gap-6 group hover:border-yellow-600/50 transition-all shadow-2xl min-h-[140px] relative overflow-hidden">
+                                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-cover bg-center" style={{ backgroundImage: `url("${cert.img}")` }} />
+                                <div className="w-1.5 h-14 bg-gradient-to-b from-red-600 to-red-900 shrink-0 group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all relative z-10" />
+                                <div className="relative z-10 flex flex-col justify-center">
+                                    <p className="text-white font-bold text-base leading-tight tracking-tight uppercase mb-2">{cert.name}</p>
+                                    <button onClick={() => cert.img && setSelectedCert(cert.img)} className={`text-[9px] text-yellow-500 font-black tracking-widest uppercase hover:text-yellow-400 transition-colors flex items-center gap-1 ${!cert.img && 'opacity-30 cursor-not-allowed'}`}><Award size={10} /> {cert.img ? 'View Credential' : 'Under Review'}</button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="achievements" className="relative w-screen h-screen flex-shrink-0 py-20 md:py-32 bg-black flex items-center snap-center snap-always">
+                <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/Achivements/1141602-black-dragon-wallpaper-hd-1920x1080-for-mobile-hd.jpg")', filter: 'brightness(1) contrast(1)' }} />
+                <div className="container mx-auto px-10 relative z-10">
+                    <div className="text-center mb-16">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">ACHIEVEMENTS</motion.h3>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+                        {ACHIEVEMENTS.map((ach, idx) => (
+                            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: idx * 0.1 }} className="bg-transparent border border-white/10 p-10 group hover:border-yellow-600/50 transition-all shadow-2xl relative backdrop-blur-sm">
+                                <div className="flex items-start gap-5">
+                                    <div className="mt-1"><Award size={32} className="text-yellow-500 group-hover:scale-110 transition-transform" /></div>
+                                    <div>
+                                        <h4 className="text-2xl font-black text-white uppercase tracking-tight mb-2">{ach.title}</h4>
+                                        <p className="text-yellow-600 font-bold uppercase text-xs tracking-widest mb-4">{ach.place}</p>
+                                        <p className="text-stone-300 leading-relaxed italic">"{ach.description}"</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills" className="relative w-screen h-screen flex-shrink-0 py-20 md:py-32 flex items-center overflow-hidden snap-center snap-always">
+                <FallingWhiteSnow />
+                <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/dojo/bamboo-forest.jpg")', filter: 'brightness(0.42)' }} />
+                <div className="absolute inset-0 bg-stone-950/35 z-0" />
+                <div className="container mx-auto px-10 relative z-10">
+                    <div className="text-center mb-24">
+                        <motion.h3 initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">SKILLS</motion.h3>
+                    </div>
+                    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-10 place-items-center">
+                        {TECH_ARSENAL.map((skill, i) => (
+                            <motion.div key={i} initial={{ opacity: 0, x: i % 6 < 3 ? -30 : 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: (i % 6) * 0.04 }} viewport={{ once: false, amount: 0.15 }} className="flex flex-col items-center group">
+                                <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 3, repeat: Infinity, delay: i * 0.1 }} whileHover={{ scale: 1.1, boxShadow: '0 0 30px rgba(234, 179, 8, 0.4)' }} className="w-32 h-32 rounded-full bg-stone-950 border-2 flex items-center justify-center transition-all cursor-crosshair overflow-hidden p-5" style={{ borderColor: 'rgba(234, 179, 8, 0.5)' }}>
+                                    {skill.type === 'img' ? <img src={skill.src} alt={skill.name} className="w-full h-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; }} /> : <div className="group-hover:scale-110 transition-transform">{skill.icon}</div>}
+                                </motion.div>
+                                <h4 className="mt-6 text-white font-black uppercase tracking-widest text-[10px]">{skill.name}</h4>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <footer id="contact" className="relative w-screen h-screen flex-shrink-0 py-24 bg-black border-t border-stone-900 overflow-hidden snap-center snap-always">
                 <FooterParticles />
                 <div className="absolute inset-0 z-0 bg-cover bg-bottom opacity-10" style={{ backgroundImage: 'url("/assets/chronicles/japan-ruins.jpg")' }} />
                 <div className="container mx-auto px-4 md:px-10 relative z-20">
                     <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
                         <div className="text-center lg:text-left">
-                            <motion.h2 initial={{ opacity: 0, y: -18, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-red-800 text-3xl md:text-5xl font-serif font-black mb-8 md:mb-12 uppercase tracking-[0.2em] md:tracking-[0.4em]">
-                                FOLLOW ME
-                            </motion.h2>
-
+                            <motion.h2 initial={{ opacity: 0, y: -18, rotate: -2 }} whileInView={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.7, delay: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-red-800 text-3xl md:text-5xl font-serif font-black mb-8 md:mb-12 uppercase tracking-[0.2em] md:tracking-[0.4em]">FOLLOW ME</motion.h2>
                             <div className="flex justify-start gap-12 mb-16">
-                                <motion.a
-                                    href={PERSONAL_INFO.socials.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }}
-                                    className="text-stone-400 transition-all duration-300"
-                                    title="GitHub"
-                                >
-                                    <Github size={40} />
-                                </motion.a>
-                                <motion.a
-                                    href={PERSONAL_INFO.socials.linkedin}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }}
-                                    className="text-stone-400 transition-all duration-300"
-                                    title="LinkedIn"
-                                >
-                                    <Linkedin size={40} />
-                                </motion.a>
-                                <motion.a
-                                    href={PERSONAL_INFO.socials.instagram}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }}
-                                    className="text-stone-400 transition-all duration-300"
-                                    title="Instagram"
-                                >
-                                    <Instagram size={40} />
-                                </motion.a>
-                                <motion.a
-                                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`}
-                                    whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }}
-                                    className="text-stone-400 transition-all duration-300"
-                                    title="Email"
-                                >
-                                    <Mail size={40} />
-                                </motion.a>
+                                <motion.a href={PERSONAL_INFO.socials.github} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }} className="text-stone-400 transition-all duration-300" title="GitHub"><Github size={40} /></motion.a>
+                                <motion.a href={PERSONAL_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }} className="text-stone-400 transition-all duration-300" title="LinkedIn"><Linkedin size={40} /></motion.a>
+                                <motion.a href={PERSONAL_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }} className="text-stone-400 transition-all duration-300" title="Instagram"><Instagram size={40} /></motion.a>
+                                <motion.a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`} whileHover={{ scale: 1.3, color: '#EAB308', filter: 'drop-shadow(0 0 10px rgba(234, 179, 8, 0.8))' }} className="text-stone-400 transition-all duration-300" title="Email"><Mail size={40} /></motion.a>
                             </div>
                             <p className="block mt-4 text-stone-300 font-semibold tracking-wider">+91 {PERSONAL_INFO.phone}</p>
-                            <a
-                                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block mt-2 text-stone-300 font-semibold tracking-wider"
-                            >
-                                {PERSONAL_INFO.email}
-                            </a>
+                            <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${PERSONAL_INFO.email}`} target="_blank" rel="noopener noreferrer" className="block mt-2 text-stone-300 font-semibold tracking-wider">{PERSONAL_INFO.email}</a>
                             <br />
-                            <div className="font-black uppercase text-stone-800" style={{ fontSize: '10px', letterSpacing: '0.6em' }}>
-                                &copy; Portfoio • Built by Sankalp Vasekar
-                            </div>
-
+                            <div className="font-black uppercase text-stone-800" style={{ fontSize: '10px', letterSpacing: '0.6em' }}>&copy; Portfoio • Built by Sankalp Vasekar</div>
                         </div>
-
                         <div className="relative h-52 w-fit border border-yellow-700/40 bg-black/40 backdrop-blur-sm rounded-md overflow-hidden inline-flex items-center justify-center p-1">
-                            <img
-                                src="/assets/footer/profile-image.jpg"
-                                alt="Profile Upload"
-                                className="h-full w-auto object-contain object-center block"
-                                onError={(e) => {
-                                    e.currentTarget.style.display = 'none';
-                                }}
-                            />
+                            <img src="/assets/footer/profile-image.jpg" alt="Profile Upload" className="h-full w-auto object-contain object-center block" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                         </div>
                     </div>
                 </div>
@@ -1010,23 +739,10 @@ export default function App() {
             {/* Certificate Lightbox */}
             {selectedCert && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl p-10">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="relative max-w-7xl w-full h-full flex flex-col items-center justify-center"
-                    >
-                        <button
-                            onClick={() => setSelectedCert(null)}
-                            className="absolute top-0 right-0 md:-top-10 md:-right-10 text-white/70 hover:text-white transition-colors p-4 md:p-0 z-[110]"
-                        >
-                            <span className="text-4xl font-light font-sans">&times;</span>
-                        </button>
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="relative max-w-7xl w-full h-full flex flex-col items-center justify-center">
+                        <button onClick={() => setSelectedCert(null)} className="absolute top-0 right-0 md:-top-10 md:-right-10 text-white/70 hover:text-white transition-colors p-4 md:p-0 z-[110]"><span className="text-4xl font-light font-sans">&times;</span></button>
                         <div className="w-full h-full overflow-auto flex items-center justify-center custom-scrollbar">
-                            <img
-                                src={selectedCert}
-                                alt="Certificate"
-                                className="max-w-[80%] max-h-[80vh] object-contain shadow-[0_0_100px_rgba(153,27,27,0.3)] border border-white/10"
-                            />
+                            <img src={selectedCert} alt="Certificate" className="max-w-[80%] max-h-[80vh] object-contain shadow-[0_0_100px_rgba(153,27,27,0.3)] border border-white/10" />
                         </div>
                     </motion.div>
                 </div>
