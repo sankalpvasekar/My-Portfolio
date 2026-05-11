@@ -493,25 +493,50 @@ export default function App() {
                 <div className="absolute inset-y-0 right-0 w-1/2 z-10 pointer-events-none">
                     <FallingWhiteSnow />
                 </div>
+
+                {/* Background image — positioned right so character stays visible */}
                 <div
-                    className="absolute inset-0 z-0 bg-cover bg-center"
+                    className="absolute inset-0 z-0"
                     style={{
                         backgroundImage: 'url("/assets/hero/main-bg.jpg")',
-                        filter: 'brightness(0.3) contrast(1.1)',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center right',
+                        filter: 'brightness(0.55) contrast(1.05)',
                     }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
+
+                {/* Gradient: opaque black on left → transparent on right so character shows */}
+                <div
+                    className="absolute inset-0 z-10"
+                    style={{
+                        background: 'linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.25) 65%, transparent 100%)',
+                    }}
+                />
+                {/* Mobile extra top-down overlay for readability */}
+                <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/20 to-transparent md:hidden" />
 
                 <div className="container mx-auto px-6 md:px-10 relative z-20">
-                    <div className="max-w-4xl">
+                    {/* Text lives in left 55% on desktop, full-width on mobile */}
+                    <div className="w-full md:max-w-[55%]">
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
-                            <motion.h1 initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="text-[40px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl">
+                            <motion.h1
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4 }}
+                                className="text-[42px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl"
+                            >
                                 {PERSONAL_INFO.name.split(' ')[0]} <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
                                     {PERSONAL_INFO.name.split(' ')[1]}
                                 </span>
                             </motion.h1>
-                            <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }} className="text-sm md:text-xl text-stone-300 mb-12 max-w-2xl leading-relaxed md:leading-8 font-medium text-left md:text-justify">
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: 0.1 }}
+                                className="text-sm md:text-lg text-stone-200 mb-10 md:mb-12 max-w-xl leading-relaxed md:leading-8 font-medium"
+                            >
                                 {PERSONAL_INFO.summary}
                             </motion.p>
 
@@ -519,8 +544,8 @@ export default function App() {
                                 <a
                                     href="/assets/resume/CSE.pdf"
                                     download="Sankalp_Vasekar_Resume.pdf"
-                                    className="w-full sm:w-auto px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3"
-                                    style={{ boxShadow: '0 0 30px rgba(153, 27, 27, 0.4)', borderColor: 'rgba(234, 179, 8, 0.3)' }}
+                                    className="w-full sm:w-auto px-8 md:px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3"
+                                    style={{ boxShadow: '0 0 30px rgba(179, 27, 27, 0.6)', borderColor: 'rgba(234, 179, 8, 0.3)' }}
                                 >
                                     <Download size={20} /> Resume
                                 </a>
