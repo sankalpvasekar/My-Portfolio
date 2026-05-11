@@ -455,7 +455,7 @@ export default function App() {
     };
 
     return (
-        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-[1280px] h-screen overflow-y-scroll overflow-x-auto overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
+        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
 
 
@@ -499,9 +499,9 @@ export default function App() {
                     className="absolute inset-0 z-0"
                     style={{
                         backgroundImage: 'url("/assets/hero/main-bg.jpg")',
-                        backgroundSize: 'cover',
+                        backgroundSize: '100% 100%',
                         backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center right',
+                        backgroundPosition: 'center',
                         filter: 'brightness(0.55) contrast(1.05)',
                     }}
                 />
@@ -518,13 +518,13 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-20">
                     {/* Text lives in left 55% on desktop, full-width on mobile */}
-                    <div className="max-w-[55%]">
+                    <div className="w-full md:max-w-[55%]">
                         <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
                             <motion.h1
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4 }}
-                                className="text-8xl font-serif font-black leading-none mb-10 tracking-tighter text-white uppercase drop-shadow-2xl"
+                                className="text-[42px] sm:text-6xl md:text-8xl font-serif font-black leading-none mb-6 md:mb-10 tracking-tighter text-white uppercase drop-shadow-2xl"
                             >
                                 {PERSONAL_INFO.name.split(' ')[0]} <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900">
@@ -535,16 +535,16 @@ export default function App() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: 0.1 }}
-                                className="text-lg text-stone-200 mb-12 max-w-xl leading-8 font-medium"
+                                className="text-sm md:text-lg text-stone-200 mb-10 md:mb-12 max-w-xl leading-relaxed md:leading-8 font-medium"
                             >
                                 {PERSONAL_INFO.summary}
                             </motion.p>
 
-                            <div className="flex flex-row gap-6 items-start">
+                             <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-start">
                                 <a
                                     href="/assets/resume/CSE.pdf"
                                     download="Sankalp_Vasekar_Resume.pdf"
-                                    className="px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3"
+                                    className="w-full sm:w-auto px-8 md:px-10 py-4 bg-red-800 text-white font-black uppercase tracking-widest hover:bg-red-700 transition-all text-center shadow-2xl border flex items-center justify-center gap-3"
                                     style={{ boxShadow: '0 0 30px rgba(179, 27, 27, 0.6)', borderColor: 'rgba(234, 179, 8, 0.3)' }}
                                 >
                                     <Download size={20} /> Resume
@@ -568,12 +568,12 @@ export default function App() {
 
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="mb-20">
-                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
+                        <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl sm:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase leading-none">
                             TRAINING & INTERNSHIPS
                         </motion.h3>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         {EXPERIENCE.map((exp, idx) => (
                             <motion.div
                                 key={idx}
@@ -584,7 +584,7 @@ export default function App() {
                                 style={{ borderColor: 'rgba(234, 179, 8, 0.4)' }}
                             >
                                 <div className="absolute top-0 right-0 w-12 h-12 border-t border-r border-red-800 opacity-40" />
-                                <motion.h4 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-500 uppercase tracking-tighter mb-2">
+                                <motion.h4 initial={{ opacity: 0, x: -10 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.3, delay: 0.1 }} viewport={{ once: false, amount: 0.25 }} className="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 group-hover:text-yellow-500 group-hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.5)] transition-all duration-500 uppercase tracking-tighter mb-2">
                                     {exp.company}
                                 </motion.h4>
                                 <div className="flex items-center gap-2 mb-8">
@@ -633,7 +633,7 @@ export default function App() {
                         </motion.h3>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         {PROJECTS.map((p, i) => (
                             <motion.div
                                 key={i}
@@ -692,7 +692,7 @@ export default function App() {
                         </motion.h3>
                     </div>
 
-                    <div className="grid grid-cols-6 gap-10 place-items-center">
+                    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-10 place-items-center">
                         {TECH_ARSENAL.map((skill, i) => (
                             <motion.div
                                 key={i}
@@ -754,7 +754,7 @@ export default function App() {
                             View Certificate Gallery
                         </motion.button>
                     </div>
-                    <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {CERTIFICATIONS.map((cert, idx) => (
                             <motion.div
                                 key={idx}
@@ -799,7 +799,7 @@ export default function App() {
                             ACHIEVEMENTS
                         </motion.h3>
                     </div>
-                    <div className="grid grid-cols-2 gap-10 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
                         {ACHIEVEMENTS.map((ach, idx) => (
                             <motion.div
                                 key={idx}
