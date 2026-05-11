@@ -488,27 +488,27 @@ export default function App() {
                 </div>
             </nav>
 
-            <section id="hero" className="relative min-h-screen flex items-center pt-20 overflow-hidden snap-start snap-always">
+            <section id="hero" className="relative min-h-[100dvh] md:min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden snap-start snap-always">
                 <FallingWhiteFeathers />
                 <div className="absolute inset-y-0 right-0 w-1/2 z-10 pointer-events-none">
                     <FallingWhiteSnow />
                 </div>
 
-                {/* Background image — positioned right so character stays visible */}
+                {/* Background image — pinned right for mobile, centered for desktop */}
                 <div
                     className="absolute inset-0 z-0"
                     style={{
-                        backgroundImage: 'url("/assets/hero/main-bg.jpg")',
-                        backgroundSize: '100% 100%',
+                        backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%), url("/assets/hero/main-bg.jpg")',
+                        backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
-                        backgroundPosition: 'center',
-                        filter: 'brightness(0.55) contrast(1.05)',
+                        backgroundPosition: window.innerWidth < 768 ? 'center right' : 'center',
+                        filter: 'brightness(0.6) contrast(1.05)',
                     }}
                 />
 
-                {/* Gradient: opaque black on left → transparent on right so character shows */}
+                {/* Gradient overlay for text readability (desktop optimized) */}
                 <div
-                    className="absolute inset-0 z-10"
+                    className="absolute inset-0 z-10 hidden md:block"
                     style={{
                         background: 'linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.25) 65%, transparent 100%)',
                     }}
