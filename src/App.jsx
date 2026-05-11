@@ -496,39 +496,21 @@ export default function App() {
         <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen flex flex-col overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
             <GhostMist />
 
-            {/* Mobile Navigation Arrows - Left/Right for Vertical Scroll */}
-            <div className="fixed bottom-10 inset-x-6 z-[60] flex flex-row justify-between md:hidden">
+            {/* Mobile Navigation Arrows - Middle Edges */}
+            <div className="fixed top-1/2 -translate-y-1/2 inset-x-4 z-[60] flex flex-row justify-between pointer-events-none md:hidden">
                 <button
                     onClick={scrollPrev}
-                    className="w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm shadow-[0_0_15px_rgba(153,27,27,0.3)]"
+                    className="w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm shadow-[0_0_15px_rgba(153,27,27,0.3)] pointer-events-auto"
                     disabled={currentSectionIdx === 0}
                 >
                     <ChevronLeft size={28} />
                 </button>
                 <button
                     onClick={scrollNext}
-                    className="w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm shadow-[0_0_15px_rgba(153,27,27,0.3)]"
+                    className="w-12 h-12 rounded-full bg-red-900/60 border border-red-500/50 flex items-center justify-center text-white backdrop-blur-sm shadow-[0_0_15px_rgba(153,27,27,0.3)] pointer-events-auto"
                     disabled={currentSectionIdx === sections.length - 1}
                 >
                     <ChevronRight size={28} />
-                </button>
-            </div>
-
-            {/* Desktop Navigation Arrows - Vertical */}
-            <div className="fixed right-10 top-1/2 -translate-y-1/2 z-[60] hidden md:flex flex-col gap-6">
-                <button
-                    onClick={scrollPrev}
-                    className="w-12 h-12 rounded-full bg-stone-900/80 border border-stone-700 flex items-center justify-center text-stone-400 hover:text-white hover:border-red-500 transition-all backdrop-blur-md"
-                    disabled={currentSectionIdx === 0}
-                >
-                    <ChevronUp size={24} />
-                </button>
-                <button
-                    onClick={scrollNext}
-                    className="w-12 h-12 rounded-full bg-stone-900/80 border border-stone-700 flex items-center justify-center text-stone-400 hover:text-white hover:border-red-500 transition-all backdrop-blur-md"
-                    disabled={currentSectionIdx === sections.length - 1}
-                >
-                    <ChevronDown size={24} />
                 </button>
             </div>
 
