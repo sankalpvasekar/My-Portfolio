@@ -11,6 +11,8 @@ import {
     Award,
     ChevronLeft,
     ChevronRight,
+    ChevronUp,
+    ChevronDown,
 } from 'lucide-react';
 
 const FallingWhiteFeathers = () => {
