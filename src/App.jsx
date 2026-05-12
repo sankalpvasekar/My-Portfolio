@@ -493,7 +493,7 @@ export default function App() {
     };
 
     return (
-        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full h-screen flex flex-col overflow-y-scroll overflow-x-hidden overscroll-none snap-y snap-mandatory scroll-smooth custom-scrollbar">
+        <div className="bg-black text-gray-200 font-sans selection:bg-red-900 selection:text-white w-full min-h-screen overflow-x-hidden scroll-smooth custom-scrollbar">
             <GhostMist />
 
             {/* Mobile Navigation Arrows - Middle Edges */}
@@ -526,7 +526,7 @@ export default function App() {
                 </div>
             </nav>
 
-            <section id="hero" className="relative w-full h-screen flex-shrink-0 flex items-center pt-32 md:pt-20 overflow-hidden snap-center snap-always">
+            <section id="hero" className="relative w-full min-h-screen flex items-center pt-32 md:pt-20 overflow-hidden">
                 <FallingWhiteFeathers />
                 <div className="absolute inset-y-0 right-0 w-1/2 z-10 pointer-events-none">
                     <FallingWhiteSnow />
@@ -562,7 +562,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="training" className="relative w-full h-screen flex-shrink-0 py-20 md:py-32 flex flex-col justify-center overflow-hidden snap-center snap-always">
+            <section id="training" className="relative w-full min-h-screen py-20 md:py-32 flex flex-col justify-center">
                 <FallingRedLeaves />
                 <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/chronicles/training-bg.jpg")', filter: 'brightness(0.45)' }} />
                 <div className="absolute inset-0 bg-black/35 z-0" />
@@ -585,7 +585,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="projects" className="relative w-full h-screen flex-shrink-0 py-20 md:py-32 overflow-hidden snap-center snap-always">
+            <section id="projects" className="relative w-full min-h-screen py-20 md:py-32">
                 <FallingWhiteStars />
                 <FallingWhiteSnow />
                 <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/relics/stone-temple.jpg")', filter: 'brightness(0.42)' }} />
@@ -614,7 +614,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="education" className="relative w-full h-screen flex-shrink-0 py-20 md:py-32 bg-black flex items-center overflow-hidden snap-center snap-always">
+            <section id="education" className="relative w-full min-h-screen py-20 md:py-32 bg-black flex items-center">
                 <FallingRedLeaves />
                 <FallingCherryBlossoms />
                 <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/education/education-bg.jpg")', filter: 'brightness(0.35)' }} />
@@ -646,7 +646,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="certifications" className="relative w-full h-screen flex-shrink-0 py-20 md:py-32 bg-black flex items-center overflow-hidden snap-center snap-always">
+            <section id="certifications" className="relative w-full min-h-screen py-20 md:py-32 bg-black flex items-center">
                 <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/certificates/certificates.jpg")', filter: 'brightness(0.35) blur(2px)' }} />
                 <div className="absolute inset-0 bg-black/40 z-0" />
                 <div className="container mx-auto px-10 relative z-10">
@@ -669,7 +669,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="achievements" className="relative w-full h-screen flex-shrink-0 py-20 md:py-32 bg-black flex items-center overflow-hidden snap-center snap-always">
+            <section id="achievements" className="relative w-full min-h-screen py-20 md:py-32 bg-black flex items-center">
                 <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/Achivements/1141602-black-dragon-wallpaper-hd-1920x1080-for-mobile-hd.jpg")', filter: 'brightness(1) contrast(1)' }} />
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-16">
@@ -692,7 +692,7 @@ export default function App() {
                 </div>
             </section>
 
-            <section id="skills" className="relative w-full h-screen flex-shrink-0 py-20 md:py-32 flex items-center overflow-hidden snap-center snap-always">
+            <section id="skills" className="relative w-full min-h-screen py-20 md:py-32 flex items-center">
                 <FallingWhiteSnow />
                 <div className="absolute inset-0 z-0 bg-cover bg-center" style={{ backgroundImage: 'url("/assets/dojo/bamboo-forest.jpg")', filter: 'brightness(0.42)' }} />
                 <div className="absolute inset-0 bg-stone-950/35 z-0" />
@@ -713,7 +713,7 @@ export default function App() {
                 </div>
             </section>
 
-            <footer id="contact" className="relative w-full h-screen flex-shrink-0 py-24 bg-black border-t border-stone-900 overflow-hidden snap-center snap-always">
+            <footer id="contact" className="relative w-full min-h-screen py-24 bg-black border-t border-stone-900">
                 <FooterParticles />
                 <div className="absolute inset-0 z-0 bg-cover bg-bottom opacity-10" style={{ backgroundImage: 'url("/assets/chronicles/japan-ruins.jpg")' }} />
                 <div className="container mx-auto px-4 md:px-10 relative z-20">
