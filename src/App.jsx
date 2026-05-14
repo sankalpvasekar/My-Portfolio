@@ -392,7 +392,7 @@ const EXPERIENCE = [
     },
     {
         role: 'VOIS PowerBI Internship',
-        company: 'Microsoft',
+        company: 'AICTE',
         year: 'Internship',
         desc: 'Worked on data visualization and analytics using Microsoft Power BI.',
         img: '/assets/certificates/tr_powerbi_internship.jpeg'
@@ -409,8 +409,8 @@ const EXPERIENCE = [
 const ACHIEVEMENTS = [
     {
         title: '2K25 Hackathon Winner',
-        place: 'SKNSOCE',
-        description: 'First place winner in the SKNSOCE Hackathon 2025, demonstrating innovative problem-solving and rapid prototyping.',
+        place: 'SKNSCOE',
+        description: 'Winner in the SKNSCOE Hackathon 2025, demonstrating innovative problem-solving and rapid prototyping.',
     },
     {
         title: 'UI/UX Design Winner',
@@ -418,7 +418,7 @@ const ACHIEVEMENTS = [
         description: 'Recognized for excellence in user interface and experience design, creating intuitive and aesthetically stunning digital solutions.',
     },
     {
-        title: '5-Star HackerRank Developer',
+        title: '5-Star at HackerRank',
         place: 'HackerRank',
         description: 'Achieved a prestigious 5-Star Gold Badge on HackerRank, reflecting elite proficiency in complex algorithms and data structures.',
     },
@@ -452,7 +452,6 @@ const EDUCATION = [
 
 export default function App() {
     const [selectedCert, setSelectedCert] = useState(null);
-    const [isCertModalOpen, setIsCertModalOpen] = useState(false);
 
     const sections = ['hero', 'training', 'projects', 'education', 'certifications', 'achievements', 'skills', 'contact'];
     const [currentSectionIdx, setCurrentSectionIdx] = useState(0);
@@ -652,7 +651,6 @@ export default function App() {
                 <div className="container mx-auto px-10 relative z-10">
                     <div className="text-center mb-16">
                         <motion.h3 initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} viewport={{ once: false, amount: 0.25 }} className="text-4xl md:text-6xl font-serif font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-red-600 to-red-900 tracking-tighter uppercase">CERTIFICATIONS</motion.h3>
-                        <motion.button initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.3 }} onClick={() => setIsCertModalOpen(true)} className="mt-6 px-8 py-3 bg-red-900/40 border border-red-500 text-red-100 font-bold uppercase tracking-widest hover:bg-red-700/60 transition-all text-sm backdrop-blur-sm">View Certificate Gallery</motion.button>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
                         {CERTIFICATIONS.map((cert, idx) => (
